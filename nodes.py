@@ -47,13 +47,16 @@ class LoraTagLoader:
             tag = f[1:-1]
             pak = tag.split(":")
             type = pak[0]
+
             if type != "lora":
                 continue
+
             name = None
             if len(pak) > 1 and len(pak[1]) > 0:
                 name = pak[1]
             else:
                 continue
+
             wModel = wClip = 0
             try:
                 if len(pak) > 2 and len(pak[2]) > 0:
@@ -63,8 +66,10 @@ class LoraTagLoader:
                     wClip = float(pak[3])
             except ValueError:
                 continue
+
             if name is None:
                 continue
+
             lora_name = None
 
             for lora_file in lora_files:
